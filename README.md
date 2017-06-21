@@ -3,8 +3,23 @@ update to bintray
 
 > 一键帮助你上次 bintary
 
+> 举个例子 
+  ```
+    compile 'com.github.zdongcoding:bintrayhelper:0.1.0'
+    含义： groupid : artifactId : version
+   ```
 直接上手就是干
-### 准备工作
+>  然后您使用了这个项目中的[Config.gradle](https://github.com/zdongcoding/simplebintray/blob/master/SimpleBintray.gradle) 
+ 您就可以跳转 **准备工作** 这项
+接入方法如下 ： 
+  ``` 
+    <!--projet 中的 build.gradle 文件中加入 -->
+    classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+    classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+    <!--lib中的build.gradle-->
+    apply from: 'https://raw.githubusercontent.com/zdongcoding/simplebintray/master/SimpleBintray.gradle'
+  ```
+# 准备工作
 * projet 中的 build.gradle 文件中加入 
     ```
     classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
@@ -131,8 +146,67 @@ update to bintray
 
 *  查找  bintray.apikey  
   
- ![](resource/API-1.png)
- ![](resource/API-2.png)
+ ![第一步](resource/API-1.png)
+ ![第二步](resource/API-2.png)
 
 #  项目信息
- 
+ ```
+ ext{
+    bintrayRepo = 'maven'  //创库名称
+    bintrayName = 'Bintrayhelper'  //项目名称
+    publishedGroupId = 'com.github.zdongcoding'   //groupid   这个和package 没有关系
+    libraryName = 'Bintrayhelper'    //
+    artifact = 'Bintrayhelper'
+    artifact_Id = 'bintrayhelper'
+    libraryVersion = '0.1.0'    //版本号
+    maturity ='Stable'     //成熟度  stable  development offical experimental
+    libraryDescription = '测试  update bintray' //项目描述
+    alllabels = ['android','bintray']
+
+    /*项目地址或者issue地址*/
+    siteUrl = 'https://github.com/zdongcoding/bintrayhelper'
+    gitUrl = 'https://github.com/zdongcoding/bintrayhelper.git'
+    issueUrl='https://github.com/zdongcoding/bintrayhelper/issues'
+    
+    /*一些开发者信息*/
+    developerId = 'zdongcoding'
+    developerName = 'zoudong'
+    developerEmail = 'zoudongq1990@gmail.com'
+
+     /*一些开源信息*/
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+ ```
+
+以上基本就配置好了 我们开始上传吧
+  ```
+    gradlew install  //第一步
+    成功后执行第二步
+    gradlew bintrayUpload   //第二步
+  ```
+  或者 ![](resource/complete-1.png)
+
+ > model---->other---install
+       
+  成功后执行第二步
+
+ > model---->publishing----bintrayUpload
+
+ 都成功后  去bintray查看
+
+ ![](resource/upload-0.png)
+ ![](resource/upload.png)
+ ![](resource/upload-2.png)
+
+ # 发布到jcenter
+ > 到了这步 说明您已经上传成功了， 然后去bintray 中找到您上传的库 右侧有个  add to jcenter 按钮  
+  如下图：
+   ![add to jcenter](resource/addtojcenter.png)
+
+   Request to include the package 'Bintrayhelper' in 'jcenter'  
+   之后半天应该差不多就能收到回执消息
+
+  您就可以在AS 中 添加依赖了   
+> compile 'com.github.zdongcoding:bintrayhelper:0.1.0'
