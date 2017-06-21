@@ -18,6 +18,7 @@ update to bintray
     classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
     <!--lib中的build.gradle-->
     apply from: 'https://raw.githubusercontent.com/zdongcoding/simplebintray/master/SimpleBintray.gradle'
+    //需要终于一点 apply from: 需要放到 ext(项目详细)后面 否则报错
   ```
 # 准备工作
 * projet 中的 build.gradle 文件中加入 
@@ -199,6 +200,7 @@ update to bintray
  ![](resource/upload-0.png)
  ![](resource/upload.png)
  ![](resource/upload-2.png)
+ ![success to jcenter](resource/add_success.png)
 
  # 发布到jcenter
  > 到了这步 说明您已经上传成功了， 然后去bintray 中找到您上传的库 右侧有个  add to jcenter 按钮  
