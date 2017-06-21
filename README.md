@@ -200,8 +200,7 @@ update to bintray
  ![](resource/upload-0.png)
  ![](resource/upload.png)
  ![](resource/upload-2.png)
- ![success to jcenter](resource/add_success.png)
-
+ 
  # 发布到jcenter
  > 到了这步 说明您已经上传成功了， 然后去bintray 中找到您上传的库 右侧有个  add to jcenter 按钮  
   如下图：
@@ -209,6 +208,8 @@ update to bintray
 
    Request to include the package 'Bintrayhelper' in 'jcenter'  
    之后半天应该差不多就能收到回执消息
+    
+   ![success to jcenter](resource/add_success.png)
 
   您就可以在AS 中 添加依赖了   
 > compile 'com.github.zdongcoding:bintrayhelper:0.1.0'
